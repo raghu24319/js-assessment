@@ -1,4 +1,4 @@
-stringsAnswers = {
+ stringsAnswers = {
   /**
    * Reduces a string by removing letters that repeat more than amount times.
    * 
@@ -10,7 +10,21 @@ stringsAnswers = {
    * @returns {String} A string with no more than amount number of repeated letters.
    */
   reduceString: function reduceString(str, amount) {
-
+    let temp;
+    let result = [];
+    let n = 0;
+    str.split("").forEach( ( char, i ) => {
+      if ( char !== temp ) {
+        result.push( char );
+        temp = char;
+        n = 0;
+      }
+      else if ( char === temp && n < amount - 1 ) {
+        result.push( char );
+        n++;
+      }
+    } );
+    return result.join("");
   },
 
   /**
@@ -22,6 +36,6 @@ stringsAnswers = {
    * @returns {String} The original string of text str reversed.
    */
   reverseString: function reverseString(str) {
-
+    return str.split("").reverse().join("")
   },
 };
